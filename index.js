@@ -51,3 +51,13 @@ function handleDragEnd() {
     sourceContainer = null;
     // ... Lógica para limpiar el 'drag-preview' (ver Cap. 11) ...
 }
+
+
+const rows = midQuery('.row', true);
+const containers = [...rows, selectorItemsSection]; // Incluye las filas y la sección de items [26]
+
+containers.forEach(container => {
+    container.addEventListener('drop', handleDrop); // Cuando se suelta el elemento [25]
+    container.addEventListener('dragover', handleDragOver); // Cuando se pasa por encima [25]
+    container.addEventListener('dragleave', handleDragLeave); // Cuando se sale [25]
+});
