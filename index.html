@@ -94,7 +94,20 @@
             <!-- ... más niveles ... -->
         </section>
         <section class="selector">
-            <!-- Selector de imágenes y botones -->
+            <div class="selector-buttons">
+                <label for="image-input" class="add-image-button button">
+                    <!-- SVG del ícono Add -->
+                </label>
+                <button class="reset-tier-button button">
+                    <!-- SVG del ícono Reset -->
+                </button>
+                <button class="save-button button">
+                    <!-- SVG del ícono Save -->
+                </button>
+            </div>
+
+            <!-- Input de archivos oculto -->
+            <input type="file" id="image-input" accept="image/*" hidden />
         </section>
     </main>
     <script type="module" src="index.js"></script>
