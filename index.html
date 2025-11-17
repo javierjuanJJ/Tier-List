@@ -49,6 +49,30 @@
             max-width: 150px;
             /* Limitar el tamaño de la imagen del header [7] */
         }
+
+        /* Definición de Custom Properties (Variables) para colores */
+        :root {
+            --color-s: #ff7f7f;
+            /* Color S (rojo) [8, 10] */
+            --color-a: #ffbf7f;
+            /* Color A (naranja) [8] */
+            /* ... otras variables de color ... */
+        }
+
+        /* Estilos para el Label de Nivel (S, A, B...) */
+        .label {
+            background: var(--Level, #000);
+            /* Usa la variable --Level. Si no existe, usa negro por defecto [9] */
+            border-right: 2px solid #333;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            /* Ejemplo de ancho [11] */
+            height: 60px;
+        }
     </style>
     <title>Teer Maker</title>
 </head>
@@ -59,7 +83,15 @@
     </header>
     <main>
         <section class="tier" id="tier-list">
-            <!-- Aquí va la magia del tier list -->
+            <div class="row" style="--Level: var(--color-s);">
+                <span class="label" contenteditable="true">S</span>
+                <!-- Aquí van los items arrastrados -->
+            </div>
+            <div class="row" style="--Level: var(--color-a);">
+                <span class="label" contenteditable="true">A</span>
+                <!-- Aquí van los items arrastrados -->
+            </div>
+            <!-- ... más niveles ... -->
         </section>
         <section class="selector">
             <!-- Selector de imágenes y botones -->
