@@ -28,3 +28,26 @@ reader.onload = (eventReader) => {
     const imageElement = createItem(source);
     selectorItemsSection.appendChild(imageElement); // Añade la imagen a la sección [18]
 };
+
+
+let draggedElement = null; // Elemento que se está moviendo [20]
+let sourceContainer = null; // Contenedor original del elemento [20]
+
+// Se asignan los listeners dentro de la función createItem:
+// imageElement.addEventListener('dragstart', handleDragStart); [20]
+// imageElement.addEventListener('dragend', handleDragEnd); [20]
+
+function handleDragStart(event) {
+    draggedElement = event.target; // El elemento arrastrado [21]
+    sourceContainer = draggedElement.parentElement; // El padre original [21]
+    
+    // Transferir datos: el source de la imagen
+    event.dataTransfer.setData('text/plain', draggedElement.src); // Guarda el source para el Drop [22, 23]
+}
+
+function handleDragEnd() {
+    // Limpiar variables al terminar el arrastre
+    draggedElement = null;
+    sourceContainer = null;
+    // ... Lógica para limpiar el 'drag-preview' (ver Cap. 11) ...
+}
