@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS Reset para box-sizing */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            /* Asegura que el padding se incluya en el ancho y alto [6] */
+        }
+
+        /* Estilos de Botones (Reset) */
+        button {
+            background: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        /* Estilos de Cuerpo */
+        body {
+            background: #18191a;
+            /* Fondo oscuro [3] */
+            font-family: System;
+            margin: 0;
+            padding-block: 8px;
+            /* Padding vertical [7] */
+            padding-inline: 32px;
+            /* Padding horizontal [4] */
+            max-width: 500px;
+            /* Limitar ancho del contenedor [4] */
+            margin-inline: auto;
+            /* Centrar contenido [4] */
+            user-select: none;
+            /* Previene la selección de texto al arrastrar elementos, importante para Drag and Drop [4, 5] */
+        }
+
+        /* Estilos del Header */
+        .top-header {
+            display: flex;
+            justify-content: center;
+        }
+
+        .top-header img {
+            max-width: 150px;
+            /* Limitar el tamaño de la imagen del header [7] */
+        }
+    </style>
     <title>Teer Maker</title>
 </head>
+
 <body>
     <header class="top-header">
         <!-- Aquí va la imagen del header -->
@@ -19,4 +67,5 @@
     </main>
     <script type="module" src="index.js"></script>
 </body>
+
 </html>
