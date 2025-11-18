@@ -61,3 +61,24 @@ containers.forEach(container => {
     container.addEventListener('dragover', handleDragOver); // Cuando se pasa por encima [25]
     container.addEventListener('dragleave', handleDragLeave); // Cuando se sale [25]
 });
+
+
+function handleDrop(event) {
+    event.preventDefault(); // Evita el comportamiento por defecto del navegador [30]
+
+    // Lógica para limpiar la previsualización (ver Cap. 11)
+    
+    if (sourceContainer && draggedElement) {
+        // 1. Eliminar el elemento del contenedor original
+        sourceContainer.removeChild(draggedElement);
+
+        // 2. Recuperar el source de la imagen transferida
+        const source = event.dataTransfer.getData('text/plain');
+
+        // 3. Crear el nuevo elemento en la posición de destino
+        const imageElement = createItem(source);
+
+        // 4. Añadirlo al contenedor actual (donde se soltó)
+        event.currentTarget.appendChild(imageElement);
+    }
+}
