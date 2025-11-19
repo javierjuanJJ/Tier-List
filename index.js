@@ -40,7 +40,7 @@ let sourceContainer = null; // Contenedor original del elemento [20]
 function handleDragStart(event) {
     draggedElement = event.target; // El elemento arrastrado [21]
     sourceContainer = draggedElement.parentElement; // El padre original [21]
-    
+
     // Transferir datos: el source de la imagen
     event.dataTransfer.setData('text/plain', draggedElement.src); // Guarda el source para el Drop [22, 23]
 }
@@ -67,7 +67,7 @@ function handleDrop(event) {
     event.preventDefault(); // Evita el comportamiento por defecto del navegador [30]
 
     // Lógica para limpiar la previsualización (ver Cap. 11)
-    
+
     if (sourceContainer && draggedElement) {
         // 1. Eliminar el elemento del contenedor original
         sourceContainer.removeChild(draggedElement);
@@ -81,4 +81,25 @@ function handleDrop(event) {
         // 4. Añadirlo al contenedor actual (donde se soltó)
         event.currentTarget.appendChild(imageElement);
     }
+}
+
+
+function handleDragOver(event) {
+    event.preventDefault(); // Esencial para que Drop funcione [27]
+    const currentTarget = event.currentTarget;
+
+    // Evita el evento si arrastramos dentro del mismo contenedor de origen
+    if (sourceContainer === currentTarget) {
+        return;
+    }
+
+    // Añadir la clase de estilo
+    currentTarget.classList.add('drag-over');
+    // ... Lógica de previsualización (ver Cap. 11) ...
+}
+
+function handleDragLeave(event) {
+    // Remover la clase de estilo
+    event.currentTarget.classList.remove('drag-over');
+    // ... Lógica para remover la previsualización (ver Cap. 11) ...
 }
