@@ -135,3 +135,19 @@ imageInput.addEventListener('change', (event) => {
         useFilesToCreateItems(files);
     }
 });
+
+
+const resetTierButton = midQuery('.reset-tier-button');
+
+resetTierButton.addEventListener('click', () => {
+    // Selecciona todas las imágenes que están en los niveles (items ya colocados)
+    const placedItems = midQuery('.tier .item-image', true); [40]
+
+    placedItems.forEach(item => {
+        // 1. Eliminar del nivel actual
+        item.remove(); [41]
+        
+        // 2. Volver a añadir a la sección de items (contenedor inicial)
+        selectorItemsSection.appendChild(item); [41]
+    });
+});
