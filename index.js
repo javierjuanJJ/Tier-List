@@ -96,6 +96,21 @@ function handleDragOver(event) {
     // Añadir la clase de estilo
     currentTarget.classList.add('drag-over');
     // ... Lógica de previsualización (ver Cap. 11) ...
+
+    // Dentro de handleDragOver(event):
+    const dragPreview = midQuery('.drag-preview'); // Busca si ya existe una preview [35]
+
+    if (draggedElement && !dragPreview) {
+        // Si estamos arrastrando un elemento y no hay preview, la creamos
+        const previewElement = draggedElement.cloneNode(true);
+        previewElement.classList.add('drag-preview');
+        currentTarget.appendChild(previewElement);
+    }
+
+    // Lógica de Eliminación (dentro de handleDragLeave y handleDrop):
+    if (dragPreview) {
+        dragPreview.remove();
+    }
 }
 
 function handleDragLeave(event) {
