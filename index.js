@@ -151,3 +151,38 @@ resetTierButton.addEventListener('click', () => {
         selectorItemsSection.appendChild(item); [41]
     });
 });
+
+
+// Listeners añadidos a selectorItemsSection para manejar archivos externos [42]
+selectorItemsSection.addEventListener('drop', handleDropFromDesktop);
+selectorItemsSection.addEventListener('dragover', handleDragOverFromDesktop);
+
+function handleDragOverFromDesktop(event) {
+    event.preventDefault();
+    
+    const dataTransfer = event.dataTransfer;
+    // Se añade una clase visualmente para indicar que es una zona de drop
+    selectorItemsSection.classList.add('drag-files');
+
+    // Validar si los datos que se transfieren son archivos (items)
+    if (dataTransfer.types.includes('Files')) {
+        // Se puede añadir lógica aquí para cambiar el estilo si es un tipo de archivo válido
+    }
+}
+
+function handleDropFromDesktop(event) {
+    event.preventDefault();
+    selectorItemsSection.classList.remove('drag-files'); // Quitar estilo visual [45]
+
+    const dataTransfer = event.dataTransfer;
+
+    if (dataTransfer.types.includes('Files')) {
+        const files = dataTransfer.files; // Recupera la lista de archivos [45]
+        
+        if (files.length > 0) {
+            // Reutiliza la función ya creada para cargar múltiples archivos
+            useFilesToCreateItems(files);
+        }
+    }
+    // Nota: Es fundamental hacer más validación aquí para asegurar que solo se acepten imágenes [46, 47]
+}
