@@ -118,3 +118,20 @@ function handleDragLeave(event) {
     event.currentTarget.classList.remove('drag-over');
     // ... Lógica para remover la previsualización (ver Cap. 11) ...
 }
+
+
+// Función reutilizable para crear ítems a partir de una lista de archivos
+function useFilesToCreateItems(files) {
+    // Array.from transforma el FileList (que no es un Array real) en un Array iterable [38]
+    Array.from(files).forEach(file => {
+        // ... (Lógica de FileReader y creación de item del Cap. 6) ...
+    });
+}
+
+// Se llama a esta función desde el listener del input 'change'
+imageInput.addEventListener('change', (event) => {
+    const files = event.target.files;
+    if (files.length > 0) {
+        useFilesToCreateItems(files);
+    }
+});
